@@ -3,10 +3,18 @@ from .models import Album, Song, Comment
 
 # Register your models here.
 @admin.register(Album)
-class PostAdmin(admin.ModelAdmin):
+class AlbumAdmin(admin.ModelAdmin):
     list_display = ['id', 'title', 'musician', 'is_public', 'updated_at']
     list_display_links = ['title']
     list_editable = ['is_public']
 
-admin.site.register(Song)
-admin.site.register(Comment)
+@admin.register(Song)
+class SongAdmin(admin.ModelAdmin):
+    list_display = ['id', 'album', 'order', 'title', 'musician', 'updated_at']
+    list_display_links = ['title']
+    list_editable = ['album', 'order']
+
+@admin.register(Comment)
+class CommentAdmin(admin.ModelAdmin):
+    list_display = ['id', 'album', 'message', 'updated_at']
+    list_display_links = ['message']
