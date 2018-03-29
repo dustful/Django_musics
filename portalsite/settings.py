@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'musics',
+    'accounts',
 ]
 
 MIDDLEWARE = [
@@ -55,7 +56,9 @@ ROOT_URLCONF = 'portalsite.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [
+            os.path.join(BASE_DIR, 'portalsite', 'templates'),
+        ],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -120,7 +123,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-# íŒŒì¼ ì—…ë¡œë“œ ì„¤ì •
+# ?ŒŒ?¼ ?—…ë¡œë“œ ?„¤? •
 
 MEDIA_URL = '/media/'
 
