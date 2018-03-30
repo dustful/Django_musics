@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .models import Album, Song, Comment
+from .models import Musician, Album, Song, Comment
 from django.contrib.auth.decorators import login_required
 from .forms import CommentForm
 
@@ -8,6 +8,15 @@ def list(request):
     albums = Album.objects.all()
     context = {'albums' : albums}
     return render(request, 'musics/list.html', context)
+
+def mdetail(request, id):
+    musician = Musician.objects.get(name = id)
+    albums = Album.objects.filter(musician = musician.id)
+    context = {
+        'musician' : musician,
+        'albums' : albums,
+    }
+    return render(request, 'musics/mdetail.html', context)
 
 def detail(request, id):
     album = Album.objects.get(id = id)

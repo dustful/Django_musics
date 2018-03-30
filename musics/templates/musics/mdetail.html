@@ -1,0 +1,62 @@
+{% extends 'musics/layout.html' %}
+{% block title %}Musics - {{musician.name}}{% endblock %}
+{% block content %}
+<nav>
+    <div class="nav-wrapper" style="margin-left: 16px;">
+        <div class="col">
+            <a href="/" class="breadcrumb"><i class="material-icons">home</i></a>
+            <span class="breadcrumb">뮤지션 상세</span>
+        </div>
+    </div>
+</nav>
+<div class="card red lighten-2">
+    <div class="row">
+        <div class="col s12 m4">
+            <div class="card">
+                <div class="card-content">
+                    <span class="card-title red-text">{{musician.name}}</span>
+                    <table class="bordered centered">
+                        <colgroup>
+                            <col width="25%">
+                            <col width="75%">
+                        </colgroup>
+                        <tr>
+                            <th>데뷔일</th>
+                            <td>{{musician.debut_at|date:'Y-m-d'}}</td>
+                        </tr>
+                        <tr>
+                            <th>소속사</th>
+                            <td>{{musician.agency}}</td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col s12 m8">
+            <div class="card">
+                <div class="card-content">
+                    <span class="card-title red-text">전체 {{albums|length}}</span>
+                    <div class="carousel">
+                        {% for album in albums %}
+                        <a class="carousel-item hoverable" href="{% url 'musics:detail' album.id %}">
+                            <img src="{{album.cover.url}}" class="album-cover">
+                            <p>{{album.title}}</p>
+                        </a>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="card">
+    <div class="card-content">
+        <span class="card-title red-text">뮤지션 소개</span>
+        {% if not musician.introduction %}
+        <p class="center-align" style="margin: 20px;">소개가 없습니다.</p>
+        {% else %}
+        {{musician.introduction|linebreaks}}
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

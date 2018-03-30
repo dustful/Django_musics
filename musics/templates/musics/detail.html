@@ -15,7 +15,7 @@
             <div class="card">
                 <div class="card-image">
                     <img src="{{album.cover.url}}">
-                    <a class="btn-floating halfway-fab waves-effect waves-light red hoverable"><i class="material-icons">favorite_border</i></a>
+                    <a class="disabled btn-floating halfway-fab waves-effect waves-light red hoverable"><i class="material-icons">favorite_border</i></a>
                 </div>
                 <div class="card-content">
                     <span class="card-title red-text">{{album.title}}</span>
@@ -26,11 +26,19 @@
                         </colgroup>
                         <tr>
                             <th>뮤지션</th>
-                            <td>{{album.musician}}</td>
+                            <td><a href="{% url 'musics:mdetail' album.musician %}">{{album.musician}}</a></td>
                         </tr>
                         <tr>
                             <th>발매일</th>
                             <td>{{album.release_at|date:'Y-m-d'}}</td>
+                        </tr>
+                        <tr>
+                            <th>장르</th>
+                            <td>{{album.genre}}</td>
+                        </tr>
+                        <tr>
+                            <th>배급사</th>
+                            <td>{{album.distribution}}</td>
                         </tr>
                     </table>
                 </div>
@@ -82,6 +90,11 @@
 <div class="card">
     <div class="card-content">
         <span class="card-title red-text">앨범 한마디</span>
+        {% if not user.is_authenticated %}
+        <ul class="collection">
+            <li class="collection-item center-align">댓글을 작성하려면 <a href="{% url 'accounts:login' %}?next={{request.path}}">로그인</a>해주세요.</li>
+        </ul>
+        {% else %}
         <form action="{% url 'musics:save_comment' album.pk %}" method="POST">
             {% csrf_token %}
             <table>
@@ -89,6 +102,7 @@
             </table>
             <p class="right-align"><button type="submit" class="waves-effect waves-light btn red lighten-2">댓글 올리기</button></p>
         </form>
+        {% endif %}
         <ul class="collection">
         {% if comments %}
             {% for comment in album.comment_set.all %}
