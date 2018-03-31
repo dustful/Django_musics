@@ -123,7 +123,7 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-# ??Ό ?—…λ΅λ“ ?„¤? •
+# λ―Έλ””μ–΄ μ„¤μ •
 
 MEDIA_URL = '/media/'
 
