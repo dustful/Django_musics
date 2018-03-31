@@ -1,5 +1,14 @@
 {% extends 'musics/layout.html' %}
 {% block title %}Musics - {{musician.name}}{% endblock %}
+{% block extra_head %}
+<style type="text/css">
+    .album-cover {
+        max-width : 216px;
+        max-height : 216px;
+        margin: 0 auto;
+    }
+</style>
+{% endblock %}
 {% block content %}
 <nav>
     <div class="nav-wrapper" style="margin-left: 16px;">
