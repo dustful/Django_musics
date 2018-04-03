@@ -24,6 +24,18 @@
                 <th>가입일</th>
                 <td>{{user.date_joined}}</td>
             </tr>
+            <tr>
+                <th>지역</th>
+                <td>{{user.profile.location}}</td>
+            </tr>
+            <tr>
+                <th>소개</th>
+                <td>{{user.profile.bio}}</td>
+            </tr>
+            <tr>
+                <th>생일</th>
+                <td>{{user.profile.birth_at}}</td>
+            </tr>
         </table>
     </div>
     <div class="card-action">
