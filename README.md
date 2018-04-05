@@ -1,10 +1,12 @@
 # django_musics
-This is a music portal site based on django.
+Welcome!
+
+This is a music portal site that based on Django framework.
 
 ## Development Envirionment
 - OS : Windows 10(64 bit)
-- Language : Python(3.6.4)
-- Framework : django(2.0.3)
+- SDK : Python(3.6.4)
+- Framework : Django(2.0.3)
 
 ## Main Functions
 - You can put on several songs and musicians to django admin page.
