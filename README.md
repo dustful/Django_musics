@@ -1,4 +1,4 @@
-# django_musics
+# Music portal by Django
 Welcome!
 
 This is a music portal site that based on Django framework.
